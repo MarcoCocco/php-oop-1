@@ -22,6 +22,7 @@ Facciamo attenzione all’organizzazione del codice, suddividendolo in appositi 
 <?php
 
 require_once './Models/Movie.php';
+require_once './db.php';
 
 ?>
 
@@ -38,6 +39,45 @@ require_once './Models/Movie.php';
 </head>
 
 <body>
+    <div class="container p-4">
+        <table class="table">
+
+            <thead>
+                <tr>
+                    <th>Titolo</th>
+                    <th>Genere</th>
+                    <th>Anno di Rilascio</th>
+                    <th>Diretto da</th>
+                    <th>Distribuzione</th>
+                    <th>Durata</th>
+                    <th>Nuova Uscita</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <?php
+
+                foreach ($movies as $singleMovie) {
+                ?>
+                    <tr>
+                        <td><?php echo $singleMovie->title ?></td>
+                        <td><?php echo $singleMovie->genre ?></td>
+                        <td><?php echo $singleMovie->releaseYear ?></td>
+                        <td><?php echo $singleMovie->directedBy ?></td>
+                        <td><?php echo $singleMovie->distributedBy ?></td>
+                        <td><?php echo $singleMovie->runningTime ?> min</td>
+                        <td><?php echo $singleMovie->newRelease ?></td>
+                    </tr>
+                <?php
+                }
+
+                ?>
+
+            </tbody>
+
+        </table>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
